@@ -5,51 +5,51 @@
         %p.side-header__box__user-name kani masanori
         %ul.side-header__box__menu
           %li.side-header__box__menu__new-group
-            %a{:href => "/groups/new"}
-              %i.fa.fa-edit
+            =link_to '#' do
+              = fa_icon 'edit'
           %li.side-header__box__menu__edit-user
-            %a{:href => "/users/1306/edit"}
-              %i.fa.fa-cog
+            =link_to '#' do
+              = fa_icon 'cog'
     .groups
-      %a{:href => "/groups/2722/messages"}
+      =link_to '#' do
         .group
           %p.group__group-name ruby勉強
           %p.group__latest-message そうだね。
-      %a{:href => "/groups/2730/messages"}
+      =link_to '#' do
         .group
           %p.group__group-name gitについて
           %p.group__latest-message 了解です。
   .chat-main
     .main-header
       .main-header__left-box
-        %h2.main-header__left-box__current-group{"data-group_id" => "2730"}
+        %h2.main-header__left-box__current-group{"data-group_id": "2730"}
           gitについて
         %ul.main-header__left-box__member-list
           Member：
           %li.main-header__left-box__member-list__member kani masanori
       
       .main-header__edit-btn 
-        %a{:href => "/groups/2730/edit"}
+        =link_to '#' do
           Edit
     .main-text
       .messages
-        .message{"data-message_id" => "7170"}
+        .message{"data-message_id": "7170"}
           .message__upper-info
             %p.message__upper-info__talker kani masanori
             %p.message__upper-info__date 2019/10/17(Thu) 15:13:44
           %p.message__text gitについて話しあいましょう！
-        .message{"data-message_id" => "7171"}
+        .message{"data-message_id": "7171"}
           .message__upper-info
             %p.message__upper-info__talker kani masanori
             %p.message__upper-info__date 2019/10/17(Thu) 15:13:55
           %p.message__text 了解です。
       .form
-        %form#new_message.new_message{"accept-charset" => "UTF-8", :action => "/groups/2730/messages", :enctype => "multipart/form-data", :method => "post"}
-          %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-          %input{:name => "authenticity_token", :type => "hidden", :value => "2cEb/eBdKLNzIGKDcQP8jW5GaViS/1GNQRnsJrq6p0BMex5CF4x7TX0kh3fRcPDyfIUlCmaFAxWBXEN+0xXRbw=="}/
+        %form#new_message.new_message{"accept-charset": "UTF-8", action: "/groups/2730/messages", enctype: "multipart/form-data", method: "post"}
+          %input{name: "utf8", type: "hidden", value: "✓"}/
+          %input{name: "authenticity_token", type: "hidden", value: "2cEb/eBdKLNzIGKDcQP8jW5GaViS/1GNQRnsJrq6p0BMex5CF4x7TX0kh3fRcPDyfIUlCmaFAxWBXEN+0xXRbw=="}/
           .input-box
-            %input#message_content.input-box__text{:name => "message[content]", :placeholder => "type a message", :type => "text"}/
-            %label.input-box__image{:for => "message_image"}
-              %i.fa.fa-image
-              %input#message_image.input-box__image__file{:name => "message[image]", :type => "file"}/
-          %input.submit-btn{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
+            %input#message_content.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
+            %label.input-box__image{for: "message_image"}
+              = fa_icon 'image'
+              %input#message_image.input-box__image__file{name: "message[image]", type: "file"}/
+          %input.submit-btn{"data-disable-with": "Send", name: "commit", type: "submit", value: "Send"}/
