@@ -14,16 +14,17 @@
           Edit
     .main-text
       .messages
-        .message{"data-message_id": "7170"}
-          .message__upper-info
-            %p.message__upper-info__talker kani masanori
-            %p.message__upper-info__date 2019/10/17(Thu) 15:13:44
-          %p.message__text gitについて話しあいましょう！
-        .message{"data-message_id": "7171"}
-          .message__upper-info
-            %p.message__upper-info__talker kani masanori
-            %p.message__upper-info__date 2019/10/17(Thu) 15:13:55
-          %p.message__text 了解です。
+        = render @messages
+        -# .message{"data-message_id": "7170"}
+        -#   .message__upper-info
+        -#     %p.message__upper-info__talker kani masanori
+        -#     %p.message__upper-info__date 2019/10/17(Thu) 15:13:44
+        -#   %p.message__text gitについて話しあいましょう！
+        -# .message{"data-message_id": "7171"}
+        -#   .message__upper-info
+        -#     %p.message__upper-info__talker kani masanori
+        -#     %p.message__upper-info__date 2019/10/17(Thu) 15:13:55
+        -#   %p.message__text 了解です。
       .form
         = form_for [@group, @message] do |f|
           = f.text_field :content, class: 'form__message', placeholder: 'type a message'
