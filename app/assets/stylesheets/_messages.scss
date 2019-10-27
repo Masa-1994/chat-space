@@ -44,6 +44,9 @@
             }
           }
         }
+        .groups::-webkit-scrollbar {
+          display: none;
+        }
     }
     .chat-main{
       width: calc(100vw - 300px);
@@ -111,6 +114,10 @@
             }
           }
         }
+        .messages::-webkit-scrollbar {
+          display: none;
+        }
+
         .form {
           background-color: #DDDDDD;
           box-sizing: border-box;
