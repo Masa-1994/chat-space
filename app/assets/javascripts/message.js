@@ -1,24 +1,22 @@
 $(function(){
-  function buildHTML(message) {
-    var content = message.content ? `${ message.content }` : "";
-    var img = message.image ? `<img src= ${ message.image }>` : "";
-    var html = `<div class="message" data-id="${message.id}">
-                  <div class="message__detail">
-                    <p class="message__detail__current-user-name">
-                      ${message.user_name}
-                    </p>
-                    <p class="message__detail__date">
-                      ${message.created_at}
-                    </p>
-                  </div>
-                  <p class="message_body">
-                    <div>
-                    ${content}
+  function buildHTML(message){
+    var image = message.image ? `<img src="${message.image}">` : ``
+    var html = `<div class="message">
+                  <div class= "upper-message">
+                    <div class= "upper-message__user-name">
+                    ${message.user_name}
                     </div>
-                    ${img}
-                  </p>
-                </div>`
-  return html;
+                    <div class= "upper-message__date">
+                      ${message.created_at}
+                    </div>
+                  </div>
+                  <div class="lower-message">
+                    <p class="lower-message__content">
+                      ${message.content}
+                    </p>
+                    ${image}
+                  </div>`
+    return html;
   }
 
   $('#new_message').on('submit', function(e){
@@ -36,10 +34,14 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.messages').append(html);
-      $('#message_content').val(''); //input内のメッセージを消しています。
+      $('#message_content').val('');
+      $('#message_image').val('');
+      $('input').prop('disabled',false);
+      $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight}, 'fast');
     })
     .fail(function(data){
       alert('エラーが発生したためメッセージは送信できませんでした。');
+      $('input').prop('disabled',false);
     })
   })
 });
